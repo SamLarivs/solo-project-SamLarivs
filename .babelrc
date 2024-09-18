@@ -1,0 +1,18 @@
+/*  configure Babel so when babel-loader is called in the webpack config file it knows what to do.
+    ./.babelrc
+
+    > create a new folder client and add an index.js file and an index.html file.
+
+    > mkdir client
+
+    > cd client
+
+    > touch index.js
+
+    > touch index.html
+
+    > cd ..
+*/
+{
+    "presets": ["@babel/preset-env", "@babel/preset-react"]
+}
