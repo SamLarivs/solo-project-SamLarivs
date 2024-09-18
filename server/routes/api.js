@@ -5,8 +5,37 @@ const router = express.Router();
 
 // API route to get people data
 router.get('/', 
-    WhoDisController.getPeople, // Call the controller method to get people
-    (req, res) => res.status(200).json() // Send the retrieved people as JSON
+    WhoDisController.getPeople, 
+    (req, res) => res.status(200).json(res.locals.people)
 );
 
-module.exports = router; // Export the router for use in your main application
+// Route to create a new person
+router.post('/create', 
+    WhoDisController.createPerson, 
+    (req, res) => {
+        console.log('PERSON SUBMITTED:', res.locals.newPerson);
+        return res.status(201).json(res.locals.newPerson);
+    }
+);
+
+router.put('/update/:id', 
+    WhoDisController.updatePerson,
+    (req, res) => {
+        console.log(`Updated person with ID: ${req.params.id}`);
+        return res.status(200).json(res.locals.updatedPerson); // Send back the updated person
+    }
+);
+
+// Route to delete a person by ID
+router.delete('/delete/:id', 
+    WhoDisController.deletePerson,
+    (req, res) => {
+        // Optionally send a response after deletion
+        console.log(`Deleted person with ID: ${req.params.id}`);
+        return res.status(204).send(); // No content to send back
+    }
+);
+
+
+
+module.exports = router;

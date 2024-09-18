@@ -11,12 +11,12 @@ const pool = new Pool({
 // Export a query function for use in your application
 module.exports = {
     query: async (text, params) => {
-        console.log('executed query', text);
+        console.log('QUERY MADE', text);
         try {
             return await pool.query(text, params);
         } catch (err) {
-            console.error('Database query error', err);
-            throw err; // Re-throw the error after logging it
+            console.error('QUERY FAILED IN DATABASE', err);
+            throw err;
         }
     }
 };
