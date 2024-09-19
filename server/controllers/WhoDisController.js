@@ -52,17 +52,26 @@ const WhoDisController = {
     updatePerson: function (req, res, next) {
         const { id } = req.params;
         const { name, age, occupation, hobby, fav_food, image } = req.body;
-
+    
+        console.log('Request Body:', req.body);
+    
         const text = `
             UPDATE people
             SET name = $1, age = $2, occupation = $3, hobby = $4, fav_food = $5, image = $6
             WHERE id = $7
             RETURNING *`;
-
+    
         const params = [name, age, occupation, hobby, fav_food, image, id];
-
+    
+        console.log('SQL Query:', text);
+        console.log('Parameters:', params);
+    
         db.query(text, params)
             .then(data => {
+                if (data.rows.length === 0) {
+                    return res.status(404).json({ error: 'Person not found' });
+                }
+                console.log('Updated Person:', data.rows[0]);
                 res.locals.updatedPerson = data.rows[0]; // Return the updated person
                 return next();
             })

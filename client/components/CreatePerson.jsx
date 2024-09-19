@@ -1,11 +1,18 @@
+//imports usestate, dispatch, addpeeps
+
 import React, { useState } from 'react';
+///Dispatch
 import { useDispatch } from 'react-redux';
 import { addPerson } from '../redux/reducer'; 
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+//how the heck do I make this go back to main after the create click?
+//use NAVIGATE?!
+import { useNavigate } from 'react-router-dom';
 
 const CreatePerson = () => {
+  //init dispatch
   const dispatch = useDispatch();
-  const navigate = useNavigate(); // Initialize navigate
+  //init navigate
+  const navigate = useNavigate(); 
   const [formData, setFormData] = useState({
     name: '',
     age: '',
@@ -16,6 +23,7 @@ const CreatePerson = () => {
   });
 
   const handleChange = (e) => {
+    //destructure name/ value from target
     const { name, value } = e.target;
     setFormData({
       ...formData,
@@ -23,10 +31,11 @@ const CreatePerson = () => {
     });
   };
 
+  //onsubmit dispatch the input data to the addperson action
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(addPerson(formData)).then(() => {
-      // Navigate back to the main page after successful submission
+      // Navigate back to the main page!!!! heck yeah
       navigate('/');
     });
     setFormData({ 
@@ -38,6 +47,12 @@ const CreatePerson = () => {
       image: '',
     });
   };
+
+//build creator route
+//should have like an h2
+//form element
+//inputs:
+//name, age, occ, hobb, food, image
 
   return (
     <div className="creator">
@@ -55,4 +70,5 @@ const CreatePerson = () => {
   );
 };
 
+//EXPORT!!!
 export default CreatePerson;

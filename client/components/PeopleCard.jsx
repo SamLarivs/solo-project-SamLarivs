@@ -1,80 +1,47 @@
-// import React, { useState } from 'react';
-// import { useDispatch } from 'react-redux';
-// import { deletePerson, updatePerson } from '../redux/reducer';
-
-// const PeopleCard = ({ info }) => {
-//   const { id, name, age, occupation, hobby, fav_food, image } = info;
-//   const dispatch = useDispatch();
-//   const [isEditing, setIsEditing] = useState(false);
-//   const [formData, setFormData] = useState({ name, age, occupation, hobby, fav_food, image });
-
-//   const handleDelete = () => {
-//     dispatch(deletePerson(id));
-//   };
-
-//   const handleUpdate = (e) => {
-//     e.preventDefault();
-//     dispatch(updatePerson({ id, ...formData }));
-//     setIsEditing(false);
-//   };
-
-//   return (
-//     <article className="card personCard">
-//       <div className="personHeadContainer">
-//         <h3 className="personName">{name}</h3>
-//         <img className="personPhoto" src={image} alt={`${name}'s profile`} />
-//       </div>
-//       <ul className="personDetailsList">
-//         <li className="personDetail">Age: {age}</li>
-//         <li className="personDetail">Occupation: {occupation}</li>
-//         <li className="personDetail">Hobby: {hobby}</li>
-//         <li className="personDetail">Favorite Food: {fav_food}</li>
-//       </ul>
-//       <button onClick={handleDelete}>Delete</button>
-//       <button onClick={() => setIsEditing(!isEditing)}>Update</button>
-
-//       {isEditing && (
-//         <form onSubmit={handleUpdate}>
-//           <input type="text" name="name" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} />
-//           <input type="number" name="age" value={formData.age} onChange={(e) => setFormData({ ...formData, age: e.target.value })} />
-//           <input type="text" name="occupation" value={formData.occupation} onChange={(e) => setFormData({ ...formData, occupation: e.target.value })} />
-//           <input type="text" name="hobby" value={formData.hobby} onChange={(e) => setFormData({ ...formData, hobby: e.target.value })} />
-//           <input type="text" name="fav_food" value={formData.fav_food} onChange={(e) => setFormData({ ...formData, fav_food: e.target.value })} />
-//           <input type="text" name="image" value={formData.image} onChange={(e) => setFormData({ ...formData, image: e.target.value })} />
-//           <button type="submit">Save Changes</button>
-//           <button type="button" onClick={() => setIsEditing(false)}>Cancel</button>
-//         </form>
-//       )}
-//     </article>
-//   );
-// };
-
-// export default PeopleCard;
 
 import React, { useState } from 'react';
+//import dispatchh
 import { useDispatch } from 'react-redux';
 import { deletePerson, updatePerson } from '../redux/reducer';
 
+//destructure props from people component
 const PeopleCard = ({ info }) => {
   const { id, name, age, occupation, hobby, fav_food, image } = info;
-
-  console.log("Person ID:", id);
 
   const dispatch = useDispatch();
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({ name, age, occupation, hobby, fav_food, image });
+//WHHYYY cant i access the id??
+console.log("Person ID:", id);
+//nvm i fixed it.
 
-  console.log("Person ID:", id);
-
+//pass the associated id to delete person action
   const handleDelete = () => {
     dispatch(deletePerson(id));
   };
 
   const handleUpdate = (e) => {
     e.preventDefault();
-    dispatch(updatePerson({ id, ...formData }));
+    //use the id and spread op the input form data
+    //dispatch to update person
+    console.log('FORM DATA', formData)
+    dispatch(updatePerson({ id, person: formData }));
     setIsEditing(false);
   };
+
+
+//build out the people cards
+//check out starwars?
+//cards need:
+//top container(div) with name above photo
+// details list, ul with li's
+//button Bar!! with delete button and edit button
+
+//use isEditing state on click switch to true
+//dropdown? or editing menu of some kind 
+//label: input
+//name, age, occupation, hobby, fav_food, image
+//on form submission handleUpdate to details state.
 
   return (
     <article className="card personCard">
@@ -158,4 +125,5 @@ const PeopleCard = ({ info }) => {
   );
 };
 
+//EXPORT!
 export default PeopleCard;
