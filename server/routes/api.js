@@ -3,13 +3,13 @@ const WhoDisController = require('../controllers/WhoDisController');
 
 const router = express.Router();
 
-// API route to get people data
+// API route to get thee peeps data
 router.get('/', 
     WhoDisController.getPeople, 
     (req, res) => res.status(200).json(res.locals.people)
 );
 
-// Route to create a new person
+// create dat new person route
 router.post('/create', 
     WhoDisController.createPerson, 
     (req, res) => {
@@ -17,7 +17,7 @@ router.post('/create',
         return res.status(201).json(res.locals.newPerson);
     }
 );
-
+// updatorrrr route
 router.put('/update/:id', 
     WhoDisController.updatePerson,
     (req, res) => {
@@ -26,13 +26,13 @@ router.put('/update/:id',
     }
 );
 
-// Route to delete a person by ID
+// Route to delete a person... by ID!
 router.delete('/delete/:id', 
     WhoDisController.deletePerson,
     (req, res) => {
-        // Optionally send a response after deletion
+        //log the ID...for very important safety reasons. lol
         console.log(`Deleted person with ID: ${req.params.id}`);
-        return res.status(204).send(); // No content to send back
+        return res.status(204).send(); 
     }
 );
 

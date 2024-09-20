@@ -9,7 +9,7 @@
   --cancel-delete-color: rgb(198, 38, 38);
 }
 
-/* Reset default styles */
+
 *,
 *:before,
 *:after {
@@ -81,12 +81,12 @@ button {
   font-weight: 900;
 }
 
-/* Main Section */
+
 .mainSection {
   margin-bottom: 5rem;
 }
 
-/* Page Options */
+
 .charactersPageOptions {
   display: flex;
   justify-content: center;
@@ -100,7 +100,7 @@ button {
   padding: 1rem 1.5rem;
 }
 
-/* Card Styles */
+
 .card {
   color: black;
   background: var(--card-background);
@@ -109,7 +109,7 @@ button {
   box-shadow: 1px 1px 5px rgba(22, 22, 22, 0.915);
 }
 
-/* Page Header */
+
 .pageHeader {
   display: flex;
   justify-content: center;
@@ -117,7 +117,7 @@ button {
   text-align: center;
 }
 
-/* Button Styles */
+
 .btnMain {
   color: var(--text-color);
   background: var(--button-color);
@@ -152,7 +152,7 @@ button {
   font-size: 1.7em;
   padding-bottom: 0.2em;
 }
-/* Character Photo */
+
 .personPhoto {
   max-width: 280px;
   display: flex;
@@ -163,7 +163,7 @@ button {
   height: 128px;
 }
 
-/* Cards Container */
+
 .personContainer {
   padding: 1rem 3rem;
   display: grid;
@@ -171,7 +171,7 @@ button {
   gap: 1rem;
 }
 
-/* Character Card Container */
+
 .personCard {
   display: flex;
   flex-direction: column;
@@ -181,7 +181,7 @@ button {
   border-radius: 15px;
 }
 
-/* Character Card Header */
+
 .personHeadContainer {
   display: flex;
   flex-direction: column;
@@ -209,26 +209,25 @@ button {
 form {
   margin-top: 0.2em;
   display: flex;
-  flex-direction: column; /* Arrange items in a column */
-  gap: 10px; /* Space between elements */
+  flex-direction: column; 
+  gap: 10px; 
 }
 
 form div {
   display: flex;
-  flex-direction: column; /* Make each div a column */
+  flex-direction: column; 
 }
 
 form input {
-  padding: 8px; /* Add some padding to inputs */
-  border: 1px solid #ccc; /* Light border */
-  border-radius: 4px; /* Rounded corners */
+  padding: 8px; 
+  border: 1px solid #ccc; 
+  border-radius: 4px; 
 }
-
 button {
   padding: 10px;
   border: none;
   border-radius: 4px;
-  background-color: --button-color; /* Bootstrap primary color */
+  background-color: --button-color; 
   color: white;
   cursor: pointer;
   margin:0.2em;
@@ -242,11 +241,11 @@ button {
 }
 
 button:hover {
-  background-color: --button-color; /* Darker shade on hover */
+  background-color: --button-color; 
 }
 
 
-/* Media Queries */
+
 @media screen and (max-width: 600px) {
   .personContainer {
     grid-template-columns: repeat(1, 1fr);

@@ -49,7 +49,7 @@ const People = () => {
       <header className="pageHeader">
         <div>
           <div id = "logobox">
-          <h1 id="logo">WhoDis?</h1>
+          <h1 id="logo">WhoDatiz</h1>
           </div>
           <Link to="/create">
             <button type="button" className="makeOne">Make your own!</button>

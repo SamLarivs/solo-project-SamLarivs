@@ -72,7 +72,7 @@ const WhoDisController = {
                     return res.status(404).json({ error: 'Person not found' });
                 }
                 console.log('Updated Person:', data.rows[0]);
-                res.locals.updatedPerson = data.rows[0]; // Return the updated person
+                res.locals.updatedPerson = data.rows[0]; 
                 return next();
             })
             .catch(err => {
@@ -82,16 +82,16 @@ const WhoDisController = {
     },
 
     deletePerson: function (req, res, next) {
-        const { id } = req.params; // Get the ID from the URL
+        const { id } = req.params; 
         console.log('THIS IS THE DELETE ID', req.params)
         const sql = 'DELETE FROM people WHERE id = $1 RETURNING *';
         
         db.query(sql, [id])
           .then((data) => {
             if (data.rowCount === 0) {
-              return res.status(404).json({ message: 'Person not found' });
+              return res.status(404).json({ message: 'No person there!' });
             }
-            return res.status(200).json({ message: 'Person deleted successfully' });
+            return res.status(200).json({ message: 'Person deleted!! wooot!' });
           })
           .catch((err) => {
             console.error('Error deleting person:', err);
